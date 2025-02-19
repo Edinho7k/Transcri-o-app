@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transcrição de Áudio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 40px;
+            background-color: #F5F5F5; /* Cinza claro, semelhante ao fundo */
+            color: #333; /* Cinza escuro para legibilidade */
+        }
+        
+        form {
+            margin-bottom: 20px;
+        }
+        
+        textarea {
+            width: 80%;
+            height: 200px;
+            margin-top: 20px;
+            border: 2px solid #D9534F; /* Vermelho, combinando com os botões */
+            background-color: #FFF; /* Branco para contraste */
+            color: #333;
+            padding: 10px;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background-color: #FFF;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border: 2px solid #F47C20; /* Laranja, combinando com a barra superior */
+        }
+        
+        button {
+            background-color: #F47C20; /* Laranja da interface */
+            color: #FFF;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #D9534F; /* Vermelho ao passar o mouse */
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Upload de Áudio para Transcrição</h2>
+        <form action="/" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept=".mp3, .wav, .m4a" required>
+            <br><br>
+            <input type="submit" value="Enviar e Transcrever">
+        </form>
+
+        {% if transcription %}
+        <h3>Transcrição:</h3>
+        <textarea readonly>{{ transcription }}</textarea>
+        <br><br>
+        <a href="{{ transcription_path }}" download>Baixar Transcrição</a>
+        {% endif %}
+    </div>
+</body>
+</html>
